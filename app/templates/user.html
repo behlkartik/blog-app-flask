@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %} <title> Hi {{ username }} </title>{% endblock %}
+{% block content %}
+    <h3> Welcome to your homepage {{ username }} </h3>
+    {% for size in sizes %}
+        <div>
+            <span> <img src={{ url_for('static', filename= '/images/profile_pics/'+ username + '/' + size.value  + '.png') }} alt="404"/> {{ size.value }} </span>
+            
+        </div>  
+    {% endfor %}
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card" style="width: 18rem;">
+                <!-- <img class="card-img-top" src="..." alt="404: Card image cap"> -->
+                <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form method=get action={{ url_for("post") }}>
+        <button type="submit" value="new_post" class="btn btn-success">New Post</button>
+    </form>
+    <form method=post>
+        <button type="submit" value="logout" class="btn btn-primary">Logout</button>
+    </form>
+{% endblock %}
