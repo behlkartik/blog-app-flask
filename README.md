@@ -1,1 +1,1 @@
-Flask app with Jinja templating, API routers, Alembic Migrations etc.
+Flask app with Jinja templating, API routers, Form Validations, SqlAlchemy, and Alembic Migrations etc.
